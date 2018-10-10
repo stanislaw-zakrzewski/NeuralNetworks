@@ -1,3 +1,7 @@
+package networkComponents;
+
+import examples.Example;
+
 import java.util.List;
 
 public class Network {

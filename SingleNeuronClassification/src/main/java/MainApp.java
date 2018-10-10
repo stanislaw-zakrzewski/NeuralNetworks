@@ -1,3 +1,8 @@
+import examples.Examples;
+import networkComponents.Network;
+import plotting.DataForPlot;
+import plotting.Plot;
+
 import java.util.ArrayList;
 import java.util.List;
 

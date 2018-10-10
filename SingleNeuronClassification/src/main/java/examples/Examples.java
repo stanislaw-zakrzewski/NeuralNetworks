@@ -1,3 +1,8 @@
+package examples;
+
+import dataHandling.FileReader;
+import examples.Example;
+
 import java.util.List;
 import java.util.Random;
 
