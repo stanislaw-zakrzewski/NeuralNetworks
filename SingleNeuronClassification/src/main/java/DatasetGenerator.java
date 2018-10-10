@@ -6,8 +6,8 @@ import java.util.List;
 import java.util.Random;
 
 public class DatasetGenerator {
-    private static final double a = 2;
-    private static final double b = -4;
+    private static final double a = 1;
+    private static final double b = 0;
     private static final int datasetCount = 100;
 
     private static List<List<Double>> dataset;

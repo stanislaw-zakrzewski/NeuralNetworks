@@ -1,17 +1,25 @@
 import java.util.ArrayList;
-import java.util.Vector;
+import java.util.List;
 
 public class MainApp {
     public static void main(String[] args) {
+        Examples examples = new Examples("oko");
+        Network network = new Network(2);
+        for (int i = 0; i < 1000; i++) {
+            network.adapt(examples.getRandomExample());
+        }
         DataForPlot dataForPlot = new DataForPlot();
-        ArrayList<Vector<Double>> line = new ArrayList<>();
-        line.add(new Vector<>());
-        line.add(new Vector<>());
-        line.get(0).add(1.0);
-        line.get(0).add(1.0);
-        line.get(1).add(3.0);
-        line.get(1).add(3.0);
-        dataForPlot.addPointSet(line);
+        List<List<Double>> class1 = new ArrayList<>();
+        List<List<Double>> class2 = new ArrayList<>();
+        for (int i = 0; i < 100; i++) {
+            if (network.work(examples.getSpecificExample(i).getInputs()) > 0.5) {
+                class1.add(examples.getSpecificExample(i).getInputs());
+            } else {
+                class2.add(examples.getSpecificExample(i).getInputs());
+            }
+        }
+        dataForPlot.addPointSet(class1);
+        dataForPlot.addPointSet(class2);
         Plot plot = new Plot("oko", dataForPlot);
         plot.pack();
         plot.setVisible(true);
