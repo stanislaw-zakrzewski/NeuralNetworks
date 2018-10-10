@@ -8,7 +8,7 @@ import java.util.List;
 
 public class MainApp {
     public static void main(String[] args) {
-        Examples examples = new Examples("oko");
+        Examples examples = new Examples("");
         Network network = new Network(2);
         for (int i = 0; i < 1000; i++) {
             network.adapt(examples.getRandomExample());
