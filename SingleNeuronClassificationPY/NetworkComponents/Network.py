@@ -17,9 +17,9 @@ class Network:
             return 0
 
     def adapt(self, example):
-        result = self.work(example.getInputs())
+        result = self.work(example.inputs)
         result_offset = example.desired_result - result
 
         for i in range(self.input_count):
-            weight_change = result_offset * (- example.getInputs()[i])
+            weight_change = result_offset * (- example.inputs[i])
             self.neuron.get_weights()[i] -= self.learning_rate * weight_change
