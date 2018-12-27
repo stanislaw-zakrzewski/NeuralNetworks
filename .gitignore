@@ -4,6 +4,10 @@ CLion, Android Studio and WebStorm
 https://intellij-support.jetbrains.com/hc/en-us/articles/206544839
 
 # User-specific stuff
+**.idea/**
+**.idea**
+**.target**
+**.target/**
 .idea/**
 .idea/
 .idea/**/workspace.xml
