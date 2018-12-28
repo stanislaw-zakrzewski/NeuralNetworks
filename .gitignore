@@ -81,3 +81,5 @@ SingleNeuronClassificationPY/venv/Scripts/
 SingleNeuronClassificationPY/venv/
 
 *.pyc
+
+MultiLayerPerceptronPY/venv/
