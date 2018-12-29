@@ -11,7 +11,7 @@ class Examples:
             self.examples.append(Example(e[0], e[1]))
 
     def get_random_example(self):
-        return random.sample(self.examples)
+        return random.choice(self.examples)
 
     def get_example(self, index: int):
         return self.examples[index]

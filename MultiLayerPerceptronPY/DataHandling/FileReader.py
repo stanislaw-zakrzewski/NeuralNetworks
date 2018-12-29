@@ -7,10 +7,10 @@ def read_classification(path: str, inputs_count: int, outputs_count: int):
         s = x.split(" ")
         counter = 0
         for i in range(inputs_count):
-            inputs.append(s[counter])
+            inputs.append(float(s[counter]))
             counter += 1
         for i in range(outputs_count):
-            outputs.append(s[counter])
+            outputs.append(float(s[counter]))
             counter += 1
         ret.append([inputs, outputs])
     return ret
