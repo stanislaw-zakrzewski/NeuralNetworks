@@ -2,13 +2,13 @@ from network_components import Network
 from examples import Examples
 
 
-def train(network: Network, examples: Examples, epochs: int):
+def train(network: Network, examples: Examples, epochs: int, initial_learning_rate, momentum):
     for i in range(epochs):
         example = examples.random()
         network.work(example.inputs)
         calculate_errors(network, example.outputs)
-        learning_rate = 0.3 * ((epochs - i) / epochs)
-        update_weights(network, example.inputs, learning_rate)
+        learning_rate = initial_learning_rate * ((epochs - i) / epochs)
+        update_weights(network, example.inputs, learning_rate, momentum)
 
 
 def calculate_errors(network, desired_outputs):
@@ -30,12 +30,15 @@ def calculate_errors(network, desired_outputs):
             neuron.error = errors[j] * neuron.derived_value
 
 
-def update_weights(network, row, learning_rate):
+def update_weights(network, row, learning_rate, momentum):
     for i in range(len(network)):
         inputs = row[:-1]
         if i != 0:
             inputs = [neuron.recent_value for neuron in network[i - 1].neurons]
         for neuron in network[i].neurons:
             for j in range(len(inputs)):
-                neuron[j] += learning_rate * neuron.error * inputs[j]
-            neuron.bias += learning_rate * neuron.error
+                neuron.previousWeights[j] = neuron[j]
+                neuron[j] += learning_rate * neuron.error * inputs[j] + momentum * (
+                        neuron[j] - neuron.previousWeights[j])
+            neuron.previousBias = neuron.bias
+            neuron.bias += learning_rate * neuron.error + momentum * (neuron.bias - neuron.previousBias)

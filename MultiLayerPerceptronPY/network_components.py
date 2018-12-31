@@ -29,7 +29,6 @@ class Network:
 class Layer:
 
     def __init__(self, weights_count: int, neurons_count: int, function, derived_function):
-        self.neuron_count = neurons_count
         self.neurons = [Neuron(weights_count, function, derived_function) for _ in range(neurons_count)]
 
     def __getitem__(self, item):
@@ -40,7 +39,7 @@ class Layer:
 
     def work(self, inputs):
         ret = []
-        for i in range(self.neuron_count):
+        for i in range(len(self)):
             ret.append(self[i].work(inputs))
         return ret
 
@@ -48,11 +47,14 @@ class Layer:
 class Neuron:
 
     def __init__(self, weight_count: int, function, derived_function):
-        self.weight_count = weight_count
         self.function = function
         self.derived_function = derived_function
+
         self.weights = [random.uniform(0.0, 1.0) for _ in range(weight_count)]
+        self.previousWeights = [0 for _ in range(weight_count)]
         self.bias = random.uniform(0.0, 1.0)
+        self.previousBias = 0
+
         self.recent_value = 0
         self.derived_value = 0
         self.error = 0
@@ -68,7 +70,7 @@ class Neuron:
 
     def work(self, inputs: []):
         s = 0
-        for i in range(self.weight_count):
+        for i in range(len(self)):
             s += self[i] * inputs[i]
         s += self.bias
         self.recent_value = self.function(s)
