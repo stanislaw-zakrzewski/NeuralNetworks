@@ -7,7 +7,7 @@ from training import train
 input_count = 1
 output_count = 1
 hidden_layers_count = 1
-neurons_on_hidden_layers_count = 5
+neurons_on_hidden_layers_count = 10
 
 n = Network(input_count, output_count, hidden_layers_count, neurons_on_hidden_layers_count)
 

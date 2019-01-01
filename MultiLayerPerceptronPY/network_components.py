@@ -21,8 +21,8 @@ class Network:
         return len(self.layers)
 
     def work(self, inputs):
-        for hl in self.layers:
-            inputs = hl.work(inputs)
+        for layer in self:
+            inputs = layer.work(inputs)
         return inputs
 
 
@@ -39,8 +39,8 @@ class Layer:
 
     def work(self, inputs):
         ret = []
-        for i in range(len(self)):
-            ret.append(self[i].work(inputs))
+        for neuron in self:
+            ret.append(neuron.work(inputs))
         return ret
 
 
@@ -70,8 +70,8 @@ class Neuron:
 
     def work(self, inputs: []):
         s = 0
-        for i in range(len(self)):
-            s += self[i] * inputs[i]
+        for i, weight in enumerate(self):
+            s += weight * inputs[i]
         s += self.bias
         self.recent_value = self.function(s)
         self.derived_value = self.derived_function(s)

@@ -22,11 +22,9 @@ def calculate_errors(network, desired_outputs):
                     error += (neuron[j] * neuron.error)
                 errors.append(error)
         else:
-            for j in range(len(layer)):
-                neuron = layer[j]
+            for j, neuron in enumerate(layer):
                 errors.append(desired_outputs[j] - neuron.recent_value)
-        for j in range(len(layer)):
-            neuron = layer[j]
+        for j, neuron in enumerate(layer):
             neuron.error = errors[j] * neuron.derived_value
 
 
