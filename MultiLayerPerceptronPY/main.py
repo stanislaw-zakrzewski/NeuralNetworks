@@ -6,8 +6,8 @@ from training import train
 
 input_count = 1
 output_count = 1
-hidden_layers_count = 1
-neurons_on_hidden_layers_count = 10
+hidden_layers_count = 2
+neurons_on_hidden_layers_count = 20
 
 n = Network(input_count, output_count, hidden_layers_count, neurons_on_hidden_layers_count)
 
@@ -15,8 +15,8 @@ input_file = 'input.txt'
 
 es = Examples(input_file, input_count, output_count)
 
-epochs = 500
-initial_learning_rate = 0.2
+epochs = 100
+initial_learning_rate = 0.01
 momentum = 0.9
 
 train(n, es, epochs, initial_learning_rate, momentum)

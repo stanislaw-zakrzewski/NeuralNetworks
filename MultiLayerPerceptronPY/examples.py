@@ -10,6 +10,9 @@ class Examples:
     def __getitem__(self, item):
         return self.examples[item]
 
+    def __setitem__(self, key, value):
+        self.examples[key] = value
+
     def __len__(self):
         return len(self.examples)
 

@@ -50,10 +50,10 @@ class Neuron:
         self.function = function
         self.derived_function = derived_function
 
-        self.weights = [random.uniform(0.0, 1.0) for _ in range(weight_count)]
-        self.previousWeights = [0 for _ in range(weight_count)]
-        self.bias = random.uniform(0.0, 1.0)
-        self.previousBias = 0
+        self.weights = [random.uniform(-0.5, 0.5) for _ in range(weight_count)]
+        self.previousWeights = [self.weights[i] for i in range(weight_count)]
+        self.bias = random.uniform(-0.5, 0.5)
+        self.previousBias = self.bias
 
         self.recent_value = 0
         self.derived_value = 0
